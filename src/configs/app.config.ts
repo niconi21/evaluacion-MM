@@ -22,6 +22,7 @@ export class App {
   private async _connectedDatabase(): Promise<boolean> {
     try {
       await sequelize.authenticate({});
+      await sequelize.sync();
       console.log(green(`Database connected on host ${sequelize.config.host}`));
       return true;
     } catch (error) {
@@ -36,7 +37,7 @@ export class App {
         this._app.listen(this._port, async () => {
           console.log(magenta(`Server listening on port ${this._port}`));
         });
-      else console.log(red(`The server is not online`));
+      else console.log(red(`Server offline`));
     });
   }
 }
