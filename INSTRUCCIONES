@@ -1,0 +1,63 @@
+POST /user
+    Request Body: {
+    	email: <string>
+    }
+    Response Body: {
+	    id: <number>
+    }
+
+POST /post
+    Request Body: {
+	    authorId: <number>,
+	    title: <string>,
+	    content: <string>
+    }
+    Response Body: {
+	    id: <number>
+    }
+
+
+
+(IVAN)
+GET /posts
+    Query params:
+    	page: number (optional default 1)
+    	width: number (optional default 5)
+    	authorId: number (optional)
+    Response Body: {
+	    pages: number,
+	    page: number,
+	    width: number,
+	    items: [{
+	    	id: number (post id),
+	    	title: string,
+	    	content: string,
+	    	createdAt: string iso8601 (yyyy-MM-ddTHH:mm:ss),
+	    	author: {
+	    		id: number,
+	    		email: string
+	    	}
+	    }]
+    }
+
+(MARTIN)
+GET /post/:id/comments
+    Response Body: [{
+	    id: number (comment id),
+	    content: string,
+	    createdAt: string iso8601,
+	    author: {
+	    	id: number,
+	    	email: string
+	    }
+    }]
+
+(NICOLAS)
+GET /author/:id/activities
+    Response Body: [{
+	    id: number (comment or post id),
+	    type: enum (post|comment),
+	    title: string (only for posts),
+	    content: string,
+	    createdAt: string iso8601 (yyyy-MM-ddTHH:mm:ss)	
+    }] 
