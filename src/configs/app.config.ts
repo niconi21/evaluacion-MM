@@ -16,12 +16,14 @@ export class App {
 
   private _middlewares() {
     this._app.use(cors());
+    this._app.use(express.urlencoded({ extended: false }));
+    this._app.use(express.json());
     this._app.use("/", APP_ROUTES);
   }
 
-  private async _connectedDatabase(): Promise<boolean> {
+  private async _connectDatabase(): Promise<boolean> {
     try {
-      await sequelize.authenticate({});
+      await sequelize.authenticate();
       await sequelize.sync();
       console.log(green(`Database connected on host ${sequelize.config.host}`));
       return true;
@@ -31,13 +33,19 @@ export class App {
     }
   }
 
-  public startServer() {
-    this._connectedDatabase().then((isConnected) => {
-      if (isConnected)
+  public startServer(): Promise<boolean> {
+    return new Promise<boolean>(async (resolve, reject) => {
+      let isConnected = await this._connectDatabase();
+      if (isConnected) {
         this._app.listen(this._port, async () => {
           console.log(magenta(`Server listening on port ${this._port}`));
+          resolve(true)
         });
-      else console.log(red(`Server offline`));
+      } else {
+        console.log(red(`Server offline`));
+        reject(false);
+      }
+      
     });
   }
 }

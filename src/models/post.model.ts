@@ -5,16 +5,13 @@ import {
   Model,
   ForeignKey,
   BelongsToGetAssociationMixin,
-  BelongsTo,
-  BelongsToCreateAssociationMixin,
+  NonAttribute,
 } from "sequelize";
 import { UserModel } from "./user.model";
-import { CommentModel } from "./comment.model";
-import { BelongsToManyGetAssociationsMixin } from 'sequelize';
 
 export class PostModel extends Model<
-  InferAttributes<PostModel, {}>,
-  InferCreationAttributes<PostModel, {}>
+  InferAttributes<PostModel, { }>,
+  InferCreationAttributes<PostModel, { }>
 > {
   declare id: CreationOptional<number>;
   declare title: string;
@@ -24,4 +21,5 @@ export class PostModel extends Model<
   declare author_id: ForeignKey<UserModel["id"]>;
 
   declare getUser: BelongsToGetAssociationMixin<UserModel>;
+
 }

@@ -103,18 +103,18 @@ CommentModel.init(
     post_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references:{
+      references: {
         model: PostModel,
-        key: 'id'
-      }
+        key: "id",
+      },
     },
     author_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references:{
+      references: {
         model: UserModel,
-        key: 'id',
-      }
+        key: "id",
+      },
     },
   },
   {
@@ -135,10 +135,11 @@ PostModel.belongsTo(UserModel, {
   as: RELATIONS_DB_STRING.userModelAlias,
 });
 
-// UserModel.belongsToMany(PostModel, {
-//   through: CommentModel,
-
-// });
-// PostModel.belongsToMany(UserModel, {
-//   through: CommentModel,
-// });
+UserModel.hasMany(CommentModel, {
+  foreignKey: RELATIONS_DB_STRING.userModelFK,
+  as: RELATIONS_DB_STRING.commentModelAlias
+});
+CommentModel.belongsTo(UserModel, {
+  foreignKey: RELATIONS_DB_STRING.userModelFK,
+  as: RELATIONS_DB_STRING.userModelAlias
+});
