@@ -69,7 +69,7 @@ describe("Creation of info", () => {
 });
 
 describe("Actions of endpoints", () => {
-  test(`GET /posts - First 5 posts of first user`, async () => {
+  test(`GET /posts - First 2 posts of first user`, async () => {
     let response = await request(server.app)
       .get(`/posts?page=1&width=5&authorId=${users[0].id}`)
       .send();
@@ -77,7 +77,7 @@ describe("Actions of endpoints", () => {
     if (response.statusCode == 200) {
       postsResponse = response.body.items;
     }
-    expect(postsResponse.length).toBe(5);
+    expect(postsResponse.length).toBe(2);
   });
 
   test(`GET /post/:id/comments - All comments of first posts`, async () => {

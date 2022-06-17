@@ -4,13 +4,10 @@ import { IComment } from "../src/interfaces/comment.interface";
 export const users: IUser[] = [
   { id: 0, email: "morenodurann@gmail.com" },
   { id: 0, email: "manuel@gmail.com" },
-  { id: 0, email: "lizzie@gmail.com" },
-  { id: 0, email: "ivan@gmail.com" },
-  { id: 0, email: "martin@gmail.com" },
   { id: 0, email: "karina@gmail.com" },
 ];
 
-export const countPosts = 5;
+export const countPosts = 2;
 
 export const getPosts = (id: number) => {
   return new Array(countPosts).fill(0).map<IPost>((x, index) => ({
