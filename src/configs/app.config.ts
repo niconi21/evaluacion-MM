@@ -24,8 +24,8 @@ export class App {
   private async _connectDatabase(): Promise<boolean> {
     try {
       await sequelize.authenticate();
-      // await sequelize.sync({force: true});
-      await sequelize.sync();
+      await sequelize.sync({force: true});
+      // await sequelize.sync();
       console.log(green(`Database connected on host ${sequelize.config.host}`));
       return true;
     } catch (error) {
