@@ -1,5 +1,7 @@
 export const APP_ENVIROMENT = {
   PORT: process.env.PORT || '3000',
+  ENV: process.env.ENVIROMENT || 'dev',
+  PATH_SSL: process.env.PATH_SSL || '/etc/letsencrypt/live/nmoreno-evaluacion.ga'
 };
 
 export const DATABASE_ENVIROMENT = {
