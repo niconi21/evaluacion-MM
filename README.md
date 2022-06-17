@@ -197,12 +197,14 @@ Este proyecto tiene como finalidad la demostración de mis capacidades en el ár
 
 ### Variables de entorno
 
-| Variable de entorno | Descripción                              | Default   |
-| ------------------- | ---------------------------------------- | --------- |
-| PORT                | Puerto donde se desplegará la aplicación | 3000      |
-| HOST_DB             | Host de la base de datos                 | localhost |
-| USERNAME_DB         | Usuario de la base de datos              | root      |
-| PASSWORD_DB         | Contraseña de la base de datos           | nodeisjs  |
-| DATABASE_DB         | Nombre de la base de datos               | nmorneodb |
+| Variable de entorno | Descripción                              | Default                                     |
+| ------------------- | ---------------------------------------- | ------------------------------------------- |
+| PORT                | Puerto donde se desplegará la aplicación | 3000                                        |
+| HOST_DB             | Host de la base de datos                 | localhost                                   |
+| USERNAME_DB         | Usuario de la base de datos              | root                                        |
+| PASSWORD_DB         | Contraseña de la base de datos           | nodeisjs                                    |
+| DATABASE_DB         | Nombre de la base de datos               | nmorneodb                                   |
+| PATH_SSL            | Ruta del certificado ssl de tu servidor  | /etc/letsencrypt/live/nmoreno-evaluacion.ga |
+| ENVIROMENT          | Entorno donde se ejecuta el servicio     | dev                                   |
 
 #### **Nota**: Para desarrollo se pueden modificar los valores por defecto de las variables en [app.enviroment.ts](./src/configs/app.enviroment.ts "Archivo de configuración de las variable de entorno")
