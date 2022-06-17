@@ -4,7 +4,7 @@
   "description": "Evaluación para inicio de residencia",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "build": "tsc",
     "dev": "ts-node-dev --respawn src/index.ts",
     "start": "node dist/index.js"
@@ -36,18 +36,10 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/jest": "^28.1.1",
+    "@types/supertest": "^2.0.12",
     "colors": "^1.4.0",
     "jest": "^28.1.1",
+    "supertest": "^6.2.3",
     "ts-jest": "^28.0.5"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/tests/",
-      "/dist/"
-    ]
   }
 }

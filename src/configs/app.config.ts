@@ -7,7 +7,7 @@ import { sequelize } from "./app.database";
 import { APP_ROUTES } from "./app.routes";
 
 export class App {
-  private _app: Application = express();
+  public app: Application = express();
   private _port: string = APP_ENVIROMENT.PORT;
 
   constructor() {
@@ -15,15 +15,16 @@ export class App {
   }
 
   private _middlewares() {
-    this._app.use(cors());
-    this._app.use(express.urlencoded({ extended: false }));
-    this._app.use(express.json());
-    this._app.use("/", APP_ROUTES);
+    this.app.use(cors());
+    this.app.use(express.urlencoded({ extended: false }));
+    this.app.use(express.json());
+    this.app.use("/", APP_ROUTES);
   }
 
   private async _connectDatabase(): Promise<boolean> {
     try {
       await sequelize.authenticate();
+      // await sequelize.sync({force: true});
       await sequelize.sync();
       console.log(green(`Database connected on host ${sequelize.config.host}`));
       return true;
@@ -37,7 +38,7 @@ export class App {
     return new Promise<boolean>(async (resolve, reject) => {
       let isConnected = await this._connectDatabase();
       if (isConnected) {
-        this._app.listen(this._port, async () => {
+        this.app.listen(this._port, async () => {
           console.log(magenta(`Server listening on port ${this._port}`));
           resolve(true)
         });
